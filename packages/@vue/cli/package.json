@@ -1,0 +1,10 @@
+{
+  "name": "simple-vue-cli",
+  "version": "1.0.0",
+  "description": "一个简单的 Vue 脚手架",
+  "author": "huitoutunao",
+  "license": "MIT",
+  "bin": {
+    "simple-vue-cli": "bin/cli.js"
+  }
+}
