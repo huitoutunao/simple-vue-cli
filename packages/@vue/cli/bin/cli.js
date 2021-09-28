@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
+const fs = require('fs-extra')
 const path = require('path')
-const readline = require('readline')
 const { program } = require('commander') // 命令行
 const inquirer = require('inquirer') // 询问交互
 const pkg = require('../package.json')
@@ -47,20 +47,13 @@ program
     const inCurrent = name === '.'
     const cwd = process.cwd() // 当前目录
     const newName = path.relative('../', cwd) // 相对路径
+    const targetDir = path.resolve(cwd, name)
 
     console.log('相对路径', newName)
     console.log('当前工作目录', cwd)
     console.log('进程参数', process.argv)
     console.log('inCurrent', inCurrent)
 
-    if (process.stdout.isTTY) {
-      const blank = '\n'.repeat(process.stdout.rows)
-      console.log('写入流', process.stdout)
-      console.log('终端行数', process.stdout.rows)
-      console.log(blank)
-      readline.cursorTo(process.stdout, 0, 0)
-      readline.clearScreenDown(process.stdout)
-    }
     // inquirer.prompt([
     //   {
     //     type: 'input',

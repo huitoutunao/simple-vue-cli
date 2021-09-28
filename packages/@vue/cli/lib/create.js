@@ -16,7 +16,7 @@ async function create(projectName) {
   const result = validateProjectName(name)
 
   if (!result.validForNewPackages) {
-    console.error(chalk.red(`项目名称无效: "${name}"`))
+    console.error(chalk.red(`Invalid project name: "${name}"`))
     result.errors && result.errors.forEach(err => {
       console.error(chalk.red.dim(`Error: ${err}`))
     })
@@ -33,7 +33,7 @@ async function create(projectName) {
         {
           name: 'ok',
           type: 'confirm',
-          message: '是否在当前目录生成项目？'
+          message: 'Generate project in current directory?'
         }
       ])
       if (!ok) {
@@ -44,7 +44,7 @@ async function create(projectName) {
         {
           name: 'action',
           type: 'list',
-          message: `当前目录 ${chalk.cyan(targetDir)} 已经存在。请选择以下操作：`,
+          message: `Target directory ${chalk.cyan(targetDir)} already exists. Pick an action:`,
           choices: [
             { name: 'Overwrite', value: 'overwrite' },
             { name: 'Merge', value: 'merge' },
@@ -60,6 +60,10 @@ async function create(projectName) {
       }
     }
   }
+
+  clearConsole()
+
+  // fs.mkdirSync(targetDir) // 创建目录
 }
 
 module.exports = (...args) => {

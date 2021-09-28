@@ -1,3 +1,5 @@
+const readline = require('readline')
+
 exports.clearConsole = () => {
   if (process.stdout.isTTY) {
     const blank = '\n'.repeat(process.stdout.rows)
