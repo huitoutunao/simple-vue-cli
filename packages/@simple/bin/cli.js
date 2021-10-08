@@ -9,7 +9,7 @@ const semver = require('semver') // 判断 node 版本是否在某个范围
 const chalk = require('chalk') // 彩色日志
 const ora = require('ora') // 加载动画
 
-const requiredVersion = require('../package.json').engines.node
+const requiredVersion = pkg.engines.node
 const log = console.log
 
 // const spinner = ora('Loading unicorns')

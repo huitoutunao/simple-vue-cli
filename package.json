@@ -2,10 +2,7 @@
   "name": "simple-vue-cli",
   "version": "1.0.0",
   "description": "一个简单的 Vue 脚手架",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "private": true,
   "author": "huitoutunao",
-  "license": "MIT"
+  "license": "MIT",
+  "private": true
 }
