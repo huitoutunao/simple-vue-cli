@@ -5,7 +5,7 @@ const inquirer = require('inquirer') // 询问交互
 const chalk = require('chalk') // 彩色日志
 const ora = require('ora') // 加载动画
 const validateProjectName = require('validate-npm-package-name') // 验证包名合法性
-const { clearConsole } = require('./util/clearConsole')
+const { clearConsole } = require('./clearConsole')
 
 async function create(projectName) {
   console.log('项目mc', projectName)
