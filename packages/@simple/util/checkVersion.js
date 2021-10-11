@@ -16,7 +16,7 @@ exports.checkVersion = function () {
 
   fs.writeFileSync(checkVersionPath, nowTime)
 
-  const lastVersion = execSync('npm view vue-cli version', {
+  const lastVersion = execSync('npm view httn-vue-cli version', {
     encoding: 'utf8'
   })
   return lastVersion

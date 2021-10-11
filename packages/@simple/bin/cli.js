@@ -11,6 +11,7 @@ const ora = require('ora') // 加载动画
 const download = require('download-git-repo') // 拉取模板
 const validateProjectName = require('validate-npm-package-name') // 验证包名合法性
 const { checkVersion } = require('../util/checkVersion')
+const { clearConsole } = require('../util/clearConsole')
 
 const requiredVersion = pkg.engines.node
 const log = console.log
@@ -18,8 +19,6 @@ const loading = ora({
   color: 'green',
   text: '加载中'
 })
-
-// log(`\n${process.version}`)
 
 // 检查 node 版本
 const checkNodeVersion = (wanted, id) => {
@@ -34,6 +33,13 @@ const checkNodeVersion = (wanted, id) => {
 
 checkNodeVersion(requiredVersion, 'vue-cli')
 
+const tmpTab = {
+  VueBase: 'master',
+  VueMobile: 'vue2-mobile'
+}
+
+const downloadAdress = (tmp) => `huitoutunao/webpack-vue-template#${tmpTab[tmp]}`
+
 const downloadCallBack = (answer, targetDir, err) => {
   loading.stop()
 
@@ -47,7 +53,6 @@ const downloadCallBack = (answer, targetDir, err) => {
     let newPkgJson = fs.readFileSync(filename).toString()
 
     newPkgJson = JSON.parse(newPkgJson)
-    log('获取pkg', newPkgJson)
 
     newPkgJson.name = answer.name
     newPkgJson.author = answer.author
@@ -59,8 +64,9 @@ const downloadCallBack = (answer, targetDir, err) => {
 
     log('拉取模板成功！')
     log(`\n`)
-    log(chalk.blue(`first setp：$ cd ${answer.name}`))
-    log(chalk.blue(`second setp：$ npm run dev`))
+    log(chalk.green(`第一步：$ cd ${answer.name}`))
+    log(chalk.green(`第二步：$ yarn install`))
+    log(chalk.green(`第三步：$ npm run serve`))
   }
 }
 
@@ -85,11 +91,11 @@ program
     const targetDir = path.resolve(cwd, projectName)
     const validateResult = validateProjectName(newName)
 
-    log(chalk.green(`相对路径${newName}`))
-    log(chalk.green('当前工作目录', cwd))
-    log('进程参数', process.argv)
-    log('inCurrent', inCurrent)
-    log('targetDir', targetDir)
+    // log(chalk.green(`相对路径${newName}`))
+    // log(chalk.green('当前工作目录', cwd))
+    // log('进程参数', process.argv)
+    // log('inCurrent', inCurrent)
+    // log('targetDir', targetDir)
 
     if (!validateResult.validForNewPackages) {
       console.error(chalk.red(`Invalid project name: "${projectName}"`))
@@ -102,6 +108,7 @@ program
       process.exit(1)
     }
 
+    clearConsole()
     const answer = await inquirer.prompt([
       {
         type: 'input',
@@ -122,11 +129,11 @@ program
         type: 'list',
         message: '使用哪种模板开发',
         name: 'tmp',
-        choices: ['vue 基础模板', 'vue 移动端模板'],
+        choices: ['VueBase', 'VueMobile'],
       }
     ])
 
-    download('huitoutunao/webpack-vue-template#master', targetDir, downloadCallBack.bind(null, answer, targetDir))
+    download(downloadAdress(answer.tmp), targetDir, downloadCallBack.bind(null, answer, targetDir))
 
     loading.color = 'green'
     loading.text = '正在拉取模板'
