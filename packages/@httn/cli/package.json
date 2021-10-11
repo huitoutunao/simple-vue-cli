@@ -1,12 +1,11 @@
 {
-  "name": "vue-cli",
-  "version": "1.0.0",
+  "name": "httn-cli",
+  "version": "1.0.2",
   "description": "脚手架 cli 部分",
   "author": "huitoutunao",
-  "license": "MIT",
-  "private": true,
+  "license": "ISC",
   "bin": {
-    "vue-cli": "bin/cli.js"
+    "httn-vue": "bin/cli.js"
   },
   "dependencies": {
     "chalk": "^4.1.2",
