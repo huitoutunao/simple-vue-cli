@@ -4,5 +4,10 @@
   "description": "一个简单的 Vue 脚手架",
   "author": "huitoutunao",
   "license": "ISC",
-  "private": true
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huitoutunao/simple-vue-cli.git",
+    "directory": "packages/@httn/cli"
+  },
+  "keywords": []
 }
