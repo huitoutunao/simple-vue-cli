@@ -1,9 +1,14 @@
 {
   "name": "httn-cli",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "脚手架 cli 部分",
   "author": "huitoutunao",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huitoutunao/simple-vue-cli.git",
+    "directory": "packages/@httn/cli"
+  },
   "bin": {
     "httn-vue": "bin/cli.js"
   },

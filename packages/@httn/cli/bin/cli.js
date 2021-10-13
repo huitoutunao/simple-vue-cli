@@ -91,12 +91,6 @@ program
     const targetDir = path.resolve(cwd, projectName)
     const validateResult = validateProjectName(newName)
 
-    // log(chalk.green(`相对路径${newName}`))
-    // log(chalk.green('当前工作目录', cwd))
-    // log('进程参数', process.argv)
-    // log('inCurrent', inCurrent)
-    // log('targetDir', targetDir)
-
     if (!validateResult.validForNewPackages) {
       console.error(chalk.red(`Invalid project name: "${projectName}"`))
       validateResult.errors && validateResult.errors.forEach(err => {
