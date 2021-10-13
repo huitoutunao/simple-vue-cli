@@ -2,4 +2,4 @@
 
 一个简单的 Vue 脚手架。
 
-正在学习搭建...
+搭建过程见[这里](https://github.com/huitoutunao/Blog/issues/15)。

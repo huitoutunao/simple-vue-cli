@@ -31,7 +31,7 @@ const checkNodeVersion = (wanted, id) => {
   }
 }
 
-checkNodeVersion(requiredVersion, 'vue-cli')
+checkNodeVersion(requiredVersion, 'httn-cli')
 
 const tmpTab = {
   VueBase: 'master',
@@ -65,14 +65,14 @@ const downloadCallBack = (answer, targetDir, err) => {
     log('拉取模板成功！')
     log(`\n`)
     log(chalk.green(`第一步：$ cd ${answer.name}`))
-    log(chalk.green(`第二步：$ yarn install`))
+    log(chalk.green(`第二步：$ yarn install or npm install`))
     log(chalk.green(`第三步：$ npm run serve`))
   }
 }
 
 program
-  .name('vue-cli')
-  .version(`vue-cli ${pkg.version}`, '-v --version')
+  .name('httn-cli')
+  .version(`httn-cli ${pkg.version}`, '-v --version')
   .usage('<command> [options]')
 
 program
